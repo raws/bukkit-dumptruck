@@ -5,8 +5,8 @@
 	<groupId>com.stratomine.bukkit.plugins</groupId>
 	<artifactId>bukkit-dumptruck</artifactId>
 	<name>Dumptruck</name>
-	<description>A Bukkit plugin to force chunk generation</description>
-	<url>https://github.com/username/bukkit-dumptruck</url>
+	<description>A Bukkit plugin for quickly generating gobs of terrain</description>
+	<url>https://github.com/raws/bukkit-dumptruck</url>
 	<inceptionYear>2011</inceptionYear>
 	<version>0.0.1-SNAPSHOT</version>
 	
