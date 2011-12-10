@@ -1,6 +1,7 @@
 package com.stratomine.bukkit.plugins;
 
 import java.text.DecimalFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -58,20 +59,28 @@ public class DumptruckPlugin extends JavaPlugin {
 			return false;
 		}
 		
-		log("Generating " + radius + " chunks around the spawn point...");
-		
 		List<World> worlds = getServer().getWorlds();
 		for (World world : worlds) {
 			generateChunks(world, radius);
 		}
 		
-		log("Scheduled " + getTotalTaskCount() + " chunk generation tasks.");
+		log("Generating " + getTotalTaskCount() + " chunks in a " + radius + "-chunk radius around the spawn point...");
 		
 		long period = 20 * 5;
 		progressTaskId = getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Runnable() {
+			private Date lastProgressCheck = new Date();
+			private int lastActiveTaskCount = getTotalTaskCount();
+			private DecimalFormat formatter = new DecimalFormat("0.0");
+			
 			public void run() {
 				double progress = 100.0 - (((double)getActiveTaskCount() / getTotalTaskCount()) * 100);
-				log("Generating chunks: " + new DecimalFormat("#.#").format(progress) + "%");
+				
+				Date now = new Date();
+				double rate = (double)(lastActiveTaskCount - getActiveTaskCount()) / ((now.getTime() - lastProgressCheck.getTime()) / 1000); 
+				lastProgressCheck = now;
+				lastActiveTaskCount = getActiveTaskCount();
+				
+				log("Generating chunks: " + formatter.format(progress) + "% (" + formatter.format(rate) + " chunks/second)");
 			}
 		}, period, period);
 		
