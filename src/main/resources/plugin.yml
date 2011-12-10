@@ -1,11 +1,14 @@
 name: Dumptruck
 main: com.stratomine.bukkit.plugins.DumptruckPlugin
 version: 0.0.1-SNAPSHOT
-depend:
-  # - Permissions
 commands:
-  # foo:
-  #   description: Do something interesting
-  #   usage: |
-  #     Usage: /foo <something>
-  #     Where <something> is an interesting thing to do.
+  dumptruck:
+    description: Force chunk generation
+    permission: dumptruck
+    usage: |
+      Usage: /dumptruck <radius>
+      Where <radius> is a number of chunks to generate around the spawn point.
+permissions:
+  dumptruck:
+    description: Grants access to /dumptruck command
+    default: op

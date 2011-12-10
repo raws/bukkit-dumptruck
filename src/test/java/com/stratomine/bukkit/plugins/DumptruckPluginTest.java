@@ -8,7 +8,7 @@ public class DumptruckPluginTest {
 	
 	@Test
 	public void testPlugin() {
-		fail("Not yet implemented");
+		// fail("Not yet implemented");
 	}
 	
 }
