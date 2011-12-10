@@ -19,7 +19,8 @@ public class ChunkGeneratorTask implements Runnable {
 	
 	public void run() {
 		if (world.loadChunk(x, z, true)) {
-			world.unloadChunk(x, z);
+			boolean safe = dumptruck.getServer().getOnlinePlayers().length > 0;
+			world.unloadChunk(x, z, true, safe);
 		}
 		
 		dumptruck.decrementTaskCount();
