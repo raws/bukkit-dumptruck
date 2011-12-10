@@ -1,5 +1,6 @@
 package com.stratomine.bukkit.plugins;
 
+import java.io.File;
 import java.util.logging.Level;
 
 import org.bukkit.World;
@@ -18,7 +19,9 @@ public class ChunkGeneratorTask implements Runnable {
 	}
 	
 	public void run() {
-		if (world.loadChunk(x, z, true)) {
+		File chunkFile = new File(world.getWorldFolder(), "region/r." + x + "." + z + ".mcr");
+		
+		if ((!world.isChunkLoaded(x, z) || !chunkFile.exists()) && world.loadChunk(x, z, true)) {
 			boolean safe = dumptruck.getServer().getOnlinePlayers().length > 0;
 			world.unloadChunk(x, z, true, safe);
 		}
