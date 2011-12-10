@@ -99,6 +99,12 @@ public class DumptruckPlugin extends JavaPlugin {
 		}
 	}
 	
+	private void onChunkGenerationComplete() {
+		getServer().getScheduler().cancelTask(progressTaskId);
+		progressTaskId = -1;
+		log("Chunk generation complete.");
+	}
+	
 	private synchronized int getActiveTaskCount() {
 		return activeTaskCount;
 	}
@@ -115,10 +121,15 @@ public class DumptruckPlugin extends JavaPlugin {
 	protected synchronized void decrementTaskCount() {
 		activeTaskCount--;
 		
+		if (activeTaskCount % 1000 == 0) {
+			List<World> worlds = getServer().getWorlds();
+			for (World world : worlds) {
+				world.save();
+			}
+		}
+		
 		if (activeTaskCount <= 0) {
-			getServer().getScheduler().cancelTask(progressTaskId);
-			progressTaskId = -1;
-			log("Chunk generation complete.");
+			onChunkGenerationComplete();
 		}
 	}
 
