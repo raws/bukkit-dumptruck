@@ -1,0 +1,11 @@
+name: Dumptruck
+main: com.stratomine.bukkit.plugins.DumptruckPlugin
+version: 0.0.1-SNAPSHOT
+depend:
+  # - Permissions
+commands:
+  # foo:
+  #   description: Do something interesting
+  #   usage: |
+  #     Usage: /foo <something>
+  #     Where <something> is an interesting thing to do.
