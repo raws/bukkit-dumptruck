@@ -1,6 +1,12 @@
-Dumptruck is a [Bukkit](http://bukkit.org/) plugin for quickly generating a large swath of terrain around your server's spawn point.
+Dumptruck is a [Bukkit](http://bukkit.org/) tool for quickly generating a large swath of terrain around your server's spawn point.
 
-Dumptruck focuses on speed and simplicity, and is ideal for previewing map seeds or tweaking custom terrain generation parameters.
+Dumptruck focuses on speed and simplicity, and is ideal for previewing map seeds or tweaking [custom terrain generation](http://dev.bukkit.org/server-mods/terrain-control/) parameters.
+
+### Downloading
+
+You can find the latest release of Dumptruck [on its GitHub downloads page](https://github.com/raws/bukkit-dumptruck/downloads).
+
+If you'd like to clone the repository, `mvn package` will gather dependencies and build a jar file in the `target` directory.
 
 ### Installation and usage
 
